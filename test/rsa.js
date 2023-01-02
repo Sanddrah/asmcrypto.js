@@ -1,4 +1,4 @@
-import * as asmCrypto from '../asmcrypto.all.es8';
+import * as asmCrypto from '../asmcrypto.all.es8.cjs';
 import chai from 'chai';
 const expect = chai.expect;
 

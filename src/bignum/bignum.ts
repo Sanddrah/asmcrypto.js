@@ -10,17 +10,7 @@ export const _bigint_stdlib = { Uint32Array: Uint32Array, Math: Math };
 export const _bigint_heap = new Uint32Array(0x100000);
 export let _bigint_asm: bigintresult;
 
-function _half_imul(a: number, b: number) {
-  return (a * b) | 0;
-}
-
-if (_bigint_stdlib.Math.imul === undefined) {
-  _bigint_stdlib.Math.imul = _half_imul;
-  _bigint_asm = bigint_asm(_bigint_stdlib, null, _bigint_heap.buffer);
-  delete _bigint_stdlib.Math.imul;
-} else {
-  _bigint_asm = bigint_asm(_bigint_stdlib, null, _bigint_heap.buffer);
-}
+_bigint_asm = bigint_asm(_bigint_stdlib, null, _bigint_heap.buffer);
 
 ///////////////////////////////////////////////////////////////////////////////
 

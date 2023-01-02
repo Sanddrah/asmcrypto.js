@@ -1,4 +1,4 @@
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';;
 import ts from 'typescript';
 import * as rollup from 'rollup';
 
@@ -23,7 +23,8 @@ import * as rollup from 'rollup';
   if (result_es5.emitSkipped) {
     const diagnostic = result_es5.diagnostics[0];
     const error = new Error(diagnostic.messageText);
-    error.stack = error.stack.replace(/at .*/, 'at ' + diagnostic.file.fileName + ':' + diagnostic.file.lineMap.findIndex(value => value > diagnostic.start));
+    //error.stack = error.stack.replace(/at .*/, 'at ' + diagnostic.file.fileName + ':' + diagnostic.file.lineMap.findIndex(value => value > diagnostic.start));
+    console.error(diagnostic);
     throw error;
   }
   const result_es8 = program_es8.emit();
@@ -96,8 +97,8 @@ import * as rollup from 'rollup';
     },
   });
   await es8bundle.write({
-    file: 'asmcrypto.all.es8.js',
-    format: 'es',
+    file: 'asmcrypto.all.es8.cjs',
+    format: 'cjs',
   });
 
   console.log('Build complete');
